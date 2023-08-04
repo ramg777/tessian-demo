@@ -70,6 +70,8 @@ jobs:
 #   AWS_REGION: ${{ secrets.AWS_REGION }} 
 
   deploy:
+    name: Terraform plan and apply
+    needs: build
     runs-on: ubuntu-latest
     defaults:
       run:
