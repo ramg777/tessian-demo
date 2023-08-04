@@ -9,7 +9,7 @@ resource "aws_subnet" "public" {
   cidr_block = "10.0.1.0/24"
 }
 
-
+#Create Internetgateway
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.my_vpc.id
 }
