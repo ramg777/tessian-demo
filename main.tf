@@ -1,7 +1,7 @@
 # Define provider and AWS region
-provider "aws" {
-  region = "eu-west-1" 
-}
+# provider "aws" {
+#   region = "eu-west-1" 
+# }
 
 
 # Create an ECS cluster
