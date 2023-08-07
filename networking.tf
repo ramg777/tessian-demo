@@ -4,9 +4,14 @@ resource "aws_vpc" "my_vpc" {
 }
 
 #Create subnet
-resource "aws_subnet" "public" {
+resource "aws_subnet" "public1" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = "10.0.1.0/24"
+}
+
+resource "aws_subnet" "public2" {
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.2.0/24"
 }
 
 #Create Internetgateway
@@ -22,8 +27,13 @@ resource "aws_route_table" "main-route-table" {
   }
 }
 
-resource "aws_route_table_association" "route-table-association" {
-  subnet_id      = aws_subnet.public.id
+resource "aws_route_table_association" "public1_association" {
+  subnet_id      = aws_subnet.public1.id
+  route_table_id = aws_route_table.main-route-table.id
+}
+
+resource "aws_route_table_association" "public2_association" {
+  subnet_id      = aws_subnet.public2.id
   route_table_id = aws_route_table.main-route-table.id
 }
 
